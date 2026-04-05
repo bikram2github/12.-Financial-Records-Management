@@ -2,7 +2,7 @@ from pydantic import BaseModel, Field
 from typing import Optional,Annotated,Literal
 
 class FinancialRecord(BaseModel):
-    tran_id: Optional[int] = Field(None, description="The unique identifier of the financial record")
+    tran_id: Optional[str] = Field(None, description="The unique identifier of the financial record")
     amount: float = Field(...,gt=0, description="The amount of the financial record,It should be greater than 0")
     record_type: Literal["income", "expense"] = Field(..., description="The type of the financial record, type such as income or expense")
     category: str = Field(..., description="The category of the financial record")

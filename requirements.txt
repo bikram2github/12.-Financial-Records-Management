@@ -6,3 +6,4 @@ pytest
 requests
 numpy
 pandas
+streamlit

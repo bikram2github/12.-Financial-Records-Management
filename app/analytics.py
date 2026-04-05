@@ -27,9 +27,5 @@ def show_category_summary():
     category_summary=data.groupby('category')['amount'].sum().to_dict()
     return category_summary
 
-def show_monthly_summary():
-    data=show_records()
-    data['month']=data['date'].dt.to_period('M')
-    monthly_summary=data.groupby(['month','record_type'])['amount'].sum().unstack(fill_value=0)
-    monthly_summary['balance']=monthly_summary.get('income',0)-monthly_summary.get('expense',0)
-    return monthly_summary.reset_index().to_dict(orient='records')
+
+

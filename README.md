@@ -3,6 +3,9 @@
 A full-stack financial tracking application built using **FastAPI (backend)** and **Streamlit (frontend)**.
 It allows users to manage income and expenses, analyze spending patterns, and visualize financial data.
 
+
+Live app : https://financial-records-management.streamlit.app/
+Fastapi Link : https://financial-records-management-production.up.railway.app/
 ---
 
 ## 🚀 Features

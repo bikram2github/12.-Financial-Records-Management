@@ -28,7 +28,7 @@ class FinancialRecordUpdate(BaseModel):
     note: Annotated[Optional[str],Field(None, description="Short description")]
 
 
-
+'''
 class Usersignup(BaseModel):
     email: EmailStr = Field(..., description="The email address of the user")
     password: str = Field(..., min_length=6, description="The password for the user account, It should be at least 6 characters long")
@@ -36,4 +36,4 @@ class Usersignup(BaseModel):
 
 class UserLogin(BaseModel):
     email: EmailStr = Field(..., description="The email address of the user")
-    password: str = Field(..., description="The password for the user account")
+    password: str = Field(..., description="The password for the user account")'''

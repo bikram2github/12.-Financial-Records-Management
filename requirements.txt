@@ -1,7 +1,7 @@
 fastapi
 pydantic
 uvicorn
-sqlite3
+db-sqlite3
 pytest
 requests
 numpy

@@ -5,9 +5,6 @@ def get_connection():
     return sqlite3.connect("financial_db.db")
 
 
-def db_cursor():
-    conn = get_connection()
-    return conn.cursor()
 
 def create_users_table():
     with sqlite3.connect("financial_db.db") as conn:
@@ -29,12 +26,13 @@ def create_db_table():
 
         create_table_query = """
         CREATE TABLE IF NOT EXISTS financial_records (
-            tran_id TEXT NOT NULL,
+            tran_id TEXT PRIMARY KEY,
             amount REAL NOT NULL,
             record_type TEXT NOT NULL,
             category TEXT NOT NULL,
             note TEXT ,
-            date TEXT DEFAULT CURRENT_TIMESTAMP
+            date TEXT DEFAULT CURRENT_DATE,
+            time TEXT DEFAULT CURRENT_TIME 
             
         );
         """
@@ -141,4 +139,4 @@ def delete_table():
         cur = conn.cursor()
 
         cur.execute("DROP TABLE IF EXISTS financial_records;")
-
+        

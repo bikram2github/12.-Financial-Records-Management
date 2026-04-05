@@ -48,7 +48,7 @@ def read_records():
 
 
 @app.get("/records/date/{date}")
-def read_records_by_date(date: str = Path(..., description="The date of the financial records in DD-MM-YYYY format",examples=["04-04-2026"])):
+def read_records_by_date(date: str = Path(..., description="The date of the financial records in YYYY-MM-DD format",examples=["2026-04-04"])):
     records = get_records_by_date(date)
     if not records:
         raise HTTPException(status_code=404, detail="No records found for this date")

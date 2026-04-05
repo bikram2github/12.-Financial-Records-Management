@@ -9,7 +9,6 @@ def db_cursor():
     conn = get_connection()
     return conn.cursor()
 
-'''
 def create_users_table():
     with sqlite3.connect("financial_db.db") as conn:
         cur = conn.cursor()
@@ -21,7 +20,7 @@ def create_users_table():
             password TEXT NOT NULL
         );
         """)
-'''
+
 
 
 def create_db_table():
@@ -34,24 +33,25 @@ def create_db_table():
             amount REAL NOT NULL,
             record_type TEXT NOT NULL,
             category TEXT NOT NULL,
-            date TEXT DEFAULT CURRENT_TIMESTAMP,
-            note TEXT
+            note TEXT ,
+            date TEXT DEFAULT CURRENT_TIMESTAMP
+            
         );
         """
 
         cur.execute(create_table_query)
 
 
-def insert_record(tran_id, amount, record_type, category, date, note=None):
+def insert_record(tran_id, amount, record_type, category, note=None):
     with sqlite3.connect("financial_db.db") as conn:
         cur = conn.cursor()
 
         insert_query = """
-        INSERT INTO financial_records (tran_id,amount, record_type, category, date, note)
-        VALUES (?, ?, ?, ?, ?, ?);
+        INSERT INTO financial_records (tran_id,amount, record_type, category, note)
+        VALUES (?, ?, ?, ?, ?);
         """
 
-        cur.execute(insert_query, (tran_id, amount, record_type, category, date, note))
+        cur.execute(insert_query, (tran_id, amount, record_type, category, note))
 
 
 def get_all_records():

@@ -16,7 +16,7 @@ def load_data():
     return data
 
 
-@app.lifespan("startup")
+@app.on_event("startup")
 def startup():
     create_db_table()
     create_users_table()
@@ -48,7 +48,7 @@ def read_records():
 
 
 @app.get("/records/date/{date}")
-def read_records_by_date(date: str = Path(..., description="The date of the financial records in DD-MM-YYYY format",example="04-04-2026")):
+def read_records_by_date(date: str = Path(..., description="The date of the financial records in DD-MM-YYYY format",examples=["04-04-2026"])):
     records = get_records_by_date(date)
     if not records:
         raise HTTPException(status_code=404, detail="No records found for this date")
@@ -57,7 +57,7 @@ def read_records_by_date(date: str = Path(..., description="The date of the fina
 
 
 @app.get("/records/category/{category}")
-def read_records_by_category(category: str = Path(..., description="The category of the financial records",example=["Rent","Groceries","Education","Entertainment","Utilities","Transportation","Healthcare"])):
+def read_records_by_category(category: str = Path(..., description="The category of the financial records",examples=["Rent","Groceries","Education","Entertainment","Utilities","Transportation","Healthcare"])):
     records = get_by_category(category)
     if not records:
         raise HTTPException(status_code=404, detail="No records found for this category")
@@ -66,7 +66,7 @@ def read_records_by_category(category: str = Path(..., description="The category
 
 
 @app.get("/records/type/{record_type}")
-def read_records_by_type(record_type: str = Path(..., example="income")):
+def read_records_by_type(record_type: str = Path(..., examples=["income", "expense"])):
     
     if record_type not in ["income", "expense"]:
         raise HTTPException(status_code=400, detail="Invalid type.Should be either 'income' or 'expense'")
@@ -81,7 +81,7 @@ def read_records_by_type(record_type: str = Path(..., example="income")):
 
 
 @app.get("/sort")
-def read_sorted_records(sort_by: str = Query(..., description="The field to sort by.It should be either 'date' or 'amount'.", example=["date", "amount"])):
+def read_sorted_records(sort_by: str = Query(..., description="The field to sort by.It should be either 'date' or 'amount'.", examples="date")):
     if sort_by not in ["date", "amount"]:
         raise HTTPException(status_code=400, detail="Invalid sort field.Should be either 'date' or 'amount'")
     sorted_records = sort_records(sort_by)

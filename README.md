@@ -12,12 +12,6 @@ Fastapi Link : https://financial-records-management-production.up.railway.app/
 
 ## 🚀 Features
 
-### 🔐 Authentication
-
-* User Signup & Login
-* Password hashing using `bcrypt`
-* JWT-based authentication
-* Secure API access
 
 ### 💵 Financial Management
 
@@ -55,7 +49,6 @@ project/
 │   ├── database.py      # Database connection & queries
 │   ├── crud.py          # Business logic
 │   ├── schemas.py       # Pydantic models
-│   ├── auth.py          # Authentication (JWT, hashing)
 │   ├── analytics.py     # Data analysis
 │
 ├── frontend/
@@ -73,7 +66,6 @@ project/
 * **Backend:** FastAPI
 * **Frontend:** Streamlit
 * **Database:** SQLite
-* **Authentication:** JWT + bcrypt
 * **Data Analysis:** Pandas
 
 ---
@@ -124,18 +116,6 @@ streamlit run frontend/frontend.py
 
 ---
 
-## 🔐 Authentication Flow
-
-1. User signs up → `/signup`
-2. User logs in → `/login`
-3. Server returns JWT token
-4. Token is used in headers:
-
-```
-Authorization: Bearer <your_token>
-```
-
----
 
 ## 📊 Example Categories
 
@@ -155,8 +135,6 @@ Authorization: Bearer <your_token>
 
 | Method | Endpoint                       | Description        |
 | ------ | ------------------------------ | ------------------ |
-| POST   | `/signup`                      | Register new user  |
-| POST   | `/login`                       | Login user         |
 | POST   | `/create`                      | Add record         |
 | GET    | `/records`                     | Get all records    |
 | GET    | `/records/date/{date}`         | Filter by date     |
